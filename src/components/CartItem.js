@@ -10,7 +10,7 @@ const CartItem = ({ item }) => {
     <div className="flex gap-x-8">
       <Link to={`/product/${item.id}`} className="w-[70px] h-[70px]">
         <img
-          src={`https://strapi-data-app.onrender.com/api${item.attributes.image.data.attributes.url}`}
+          src={`https://strapi-data-app.onrender.com/api/${item.attributes.image.data.attributes.url}`}
           alt=""
         />
       </Link>

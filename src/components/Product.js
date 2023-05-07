@@ -18,7 +18,7 @@ const Product = ({ product }) => {
         <div className="w-full h-[200px] flex items-center justify-center relative">
           <img
             className="w-[160px] h-[160px] group-hover:scale-90 transition-all"
-            src={`https://strapi-data-app.onrender.com/api${product.attributes.image.data.attributes.url}`}
+            src={`https://strapi-data-app.onrender.com/api/${product.attributes.image.data.attributes.url}`}
             alt=""
           />
         </div>
