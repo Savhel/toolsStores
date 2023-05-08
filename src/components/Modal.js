@@ -34,14 +34,16 @@ const Modal = ({ visible, onClose, total }) => {
       const result = await api.lireCommandes();
       //console.log(result.data);
       setCommandes(result.data);
+
+      
     };
     fetchData();
   }, []);
 
-  
+   
   let val;
 
- 
+ setInfo({ ...info, total: total });
  
     
   const getCode = () => {
@@ -52,21 +54,23 @@ const Modal = ({ visible, onClose, total }) => {
   val = 0;
   
   
+  
   const handlePayement = async () => {
 
-    const uniqueString = new Date().getTime().toString(36) + Math.random().toString(36).substring(2);
+   const uniqueString = new Date().getTime().toString(36) + Math.random().toString(36).substring(2);
    const id = uniqueString.substr(0, 6);
     setCode(id);
-    setInfo({ ...info, code: id });
-   console.log(info);
-    if (info) {
+      setInfo({ ...info, code: id });
+      //console.log(code);
+    console.log(info);
+    
+   if (info) {
     
       try {
         const res = await request.post("/commanders", {
           cart,
           info,
         });
-        val = 1;
         alert(
           "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
         );
@@ -74,12 +78,12 @@ const Modal = ({ visible, onClose, total }) => {
         alert(
           "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
         );
-        //console.log(error);
+        console.log(error);
       } 
-      //onClose();
+      onClose();
       
 
-    }
+    } 
   }
 
   const [display, setDisplay] = useState(false);
@@ -121,6 +125,7 @@ const Modal = ({ visible, onClose, total }) => {
 let mode;
   
   if (get === 1) {
+
     mode = (
       <div>
         <h6 className="text-red-600">

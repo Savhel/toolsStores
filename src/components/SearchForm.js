@@ -37,7 +37,7 @@ const SearchForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className={`${isAnimating ? 'animate-shake' : 'animate-none'} w-full relative`}>
-      <input onChange={handleSearchInput} className='input' type='text' placeholder='Rechercher un élément précis ...' />
+      <input onChange={handleSearchInput} className='input' type='text'  placeholder='Rechercher un élément précis ...' />
       <button className='btn btn-accent absolute top-0 right-0 rounded-tl-none rounded-bl-none'>
         <FiSearch
           className='text-xl' />

@@ -17,30 +17,36 @@ const Commandes = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchTerm = searchParams.get("query");
-  console.log(searchTerm);
+  //console.log(searchTerm);
   //recuperer les produits en fonctions de le recherche
   const { data } = useFetch(
-    `/products?populate=*&filters[titre][$contains]=${searchTerm}`
+    `/commanders?populate=*&filters[code][$contains]=${searchTerm}`
   );
-  //console.log(data);
+ console.log(data[0].attributes.panier); 
 
   return (
     <div className="w-full h-ful px-4 text-white">
-      <div className="overflow-y-auto h-[75vh]">
-        <div className="flex flex-col gap-y-10 px-2">
-          {cart.map((item) => {
+      <div className="overflow-y-auto mx-auto">
+        <div>
+          <h2 className="text-center text-2xl">
+            Mr / M. {data[0].attributes.prenom} {data[0].attributes.nom}
+          </h2>
+          <h3 className="text-center text-lg text-accent">
+            est dans le beson de ces outils à {data[0].attributes.adresse} pour
+            plus d'information par rapport contact le au +237-
+            {data[0].attributes.telephone}
+          </h3>
+        </div>
+        <div className="flex flex-col gap-y-10 px-2 mx-auto">
+          {data[0].attributes.panier.map((item) => {
             return <CartItem item={item} key={item.id} />;
           })}
         </div>
       </div>
       {/*sous total et total */}
-      {cart.length >= 1 && (
+      {data[0].attributes.panier.length >= 1 && (
         <div className="px-6 py-10 flex flex-col">
-          {/*sous total*/}
-          <div className="flex justify-between text-lg">
-            <div>Sous total</div>
-            <div>{total} Fcfa</div>
-          </div>
+         
           {/*Total*/}
           <div className="flex justify-between text-2xl">
             <div>Totals : </div>
