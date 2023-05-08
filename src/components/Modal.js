@@ -16,7 +16,7 @@ import valider from './valider';
 
 const Modal = ({ visible, onClose, total }) => {
 
-  const { cart, isLoad, setIsLoad } = useContext(CartContext);
+  const { cart, isLoad, setIsLoad, setCartT } = useContext(CartContext);
   const [get, setGet] = useState(null);
   const [info, setInfo] = useState({});
   const [commandes, setCommandes] = useState([]);
@@ -43,7 +43,6 @@ const Modal = ({ visible, onClose, total }) => {
    
   let val;
 
- setInfo({ ...info, total: total });
  
     
   const getCode = () => {
@@ -57,11 +56,13 @@ const Modal = ({ visible, onClose, total }) => {
   
   const handlePayement = async () => {
 
+    setCartT(total);
+    
    const uniqueString = new Date().getTime().toString(36) + Math.random().toString(36).substring(2);
    const id = uniqueString.substr(0, 6);
     setCode(id);
       setInfo({ ...info, code: id });
-      //console.log(code);
+      console.log(total);
     console.log(info);
     
    if (info) {
@@ -70,6 +71,9 @@ const Modal = ({ visible, onClose, total }) => {
         const res = await request.post("/commanders", {
           cart,
           info,
+          total,
+          code,
+          total,
         });
         alert(
           "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"

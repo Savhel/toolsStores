@@ -10,6 +10,7 @@ const CartProvider = ({ children }) => {
   const [itemsAmount, setItemsAmount] = useState(0);
   const [amount, setAmount] = useState(0);
   const [total, setTotal] = useState(0);
+  const[cartT, setCartT] = useState(0);
 
   //montant
   useEffect(() => {
@@ -110,20 +111,25 @@ const CartProvider = ({ children }) => {
   }
 
   return (
-    <CartContext.Provider value={{
-      isOpen,
-      setIsOpen,
-      addToCart,
-      cart,
-      removeFromCart,
-      itemsAmount,
-      handleInput,
-      hanldeSelect,
-      total,
-      clearCart,
-    }} >
+    <CartContext.Provider
+      value={{
+        isOpen,
+        setIsOpen,
+        addToCart,
+        cart,
+        removeFromCart,
+        itemsAmount,
+        handleInput,
+        hanldeSelect,
+        total,
+        clearCart,
+        cartT,
+        setCartT,
+      }}
+    >
       {children}
-    </CartContext.Provider>);
+    </CartContext.Provider>
+  );
 };
 
 export default CartProvider;

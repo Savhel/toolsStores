@@ -5,7 +5,10 @@ import useFetch from '../hooks/useFetch';
 const LatestProducts = () => {
 
   //recuperer les nouveau produits
-    const { data } = useFetch('/products?populate=*&filters[isNew]=true');
+    const { data } = useFetch('/products?populate=*&filters[isNew]=true')({
+      offset: 15, 
+      limit: 10,
+    });
     
   return (
         <div className='mb-16'>

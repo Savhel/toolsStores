@@ -8,7 +8,7 @@ import CategoryNav from "../components/CategoryNav";
 import Product from "../components/Product";
 
 const Commandes = () => {
-  const { setIsOpen, cart, total, clearCart } = useContext(CartContext);
+  const { setIsOpen, cart, total, clearCart, cartT } = useContext(CartContext);
 
   const [isLoad, setIsLoad] = useState(false);
 
@@ -44,16 +44,14 @@ const Commandes = () => {
         </div>
       </div>
       {/*sous total et total */}
-      {data[0].attributes.panier.length >= 1 && (
-        <div className="px-6 py-10 flex flex-col">
-         
+      <div className="px-6 py-10 flex flex-col">
           {/*Total*/}
           <div className="flex justify-between text-2xl">
-            <div>Totals : </div>
-            <div>{total} Fcfa</div>
+            <div>Total : </div>
+            <div>{cartT} Fcfa</div>
           </div>
         </div>
-      )}
+      
       {/*boutons */}
       <div className="px-6 ">
         {cart.length >= 1 ? (
