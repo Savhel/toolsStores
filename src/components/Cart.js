@@ -31,11 +31,6 @@ const Cart = () => {
       {/*sous total et total */}
       {cart.length >= 1 && (
         <div className="px-6 py-10 flex flex-col">
-          {/*sous total*/}
-          <div className="flex justify-between text-lg">
-            <div>Sous total</div>
-            <div>{total} Fcfa</div>
-          </div>
           {/*Total*/}
           <div className="flex justify-between text-2xl">
             <div>Totals : </div>
