@@ -12,7 +12,7 @@ const Search = () => {
   console.log(searchTerm);
   //recuperer les produits en fonctions de le recherche
   const { data } = useFetch(`/products?populate=*&filters[titre][$contains]=${searchTerm}`);
-  console.log(data);
+  //console.log(data);
   return(
   <div className='mb-[30px] pt-40 lg:pt-4 xl:pt-0'>
     <div className='container mx-auto'>

@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import Search from "./pages/Search";
+import Commandes from "./pages/Commandes";
 
 //components
 import Header from "./components/Header";
@@ -33,13 +34,15 @@ const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      {path: "/",element: <Home /> },
+      { path: "/", element: <Home /> },
 
-      {path: "/product/:id",element: <ProductDetails /> },
+      { path: "/product/:id", element: <ProductDetails /> },
 
-      {path: "/products/:id", element: <Products /> },
+      { path: "/products/:id", element: <Products /> },
 
-      {path: "/search", element: <Search /> },
+      { path: "/search", element: <Search /> },
+
+      { path: "/commande", element: <Commandes /> },
     ],
   },
 ]);

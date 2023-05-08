@@ -42,8 +42,11 @@ const Modal = ({ visible, onClose, total }) => {
   let val;
   val = 0;
   const handlePayement = async () => {
-    console.log(info);
-    if (info.length >4) {
+    //console.log(info);
+    const id = uniqueString.substr(0, 6);
+    setCode(id);
+    setInfo({ ...info, code: code });
+    if (info) {
     
       try {
         const res = await request.post("/commanders", {
