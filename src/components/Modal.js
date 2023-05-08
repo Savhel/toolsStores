@@ -11,6 +11,9 @@ import * as api from "../api";
 import axios from "axios";
 import { request } from '../request';
 
+import valider from './valider';
+
+
 const Modal = ({ visible, onClose, total }) => {
 
   const { cart, isLoad, setIsLoad } = useContext(CartContext);
@@ -18,7 +21,13 @@ const Modal = ({ visible, onClose, total }) => {
   const [info, setInfo] = useState({});
   const [commandes, setCommandes] = useState([]);
 
+   const [popupStyle, showPopup] = useState("hidden");
+
   const [code, setCode] = useState('');
+
+  const [isopen, setIsopen] = useState(false);
+
+  const handleOnclose = () => setIsopen(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,19 +39,31 @@ const Modal = ({ visible, onClose, total }) => {
   }, []);
 
   const uniqueString = new Date().getTime().toString(36) + Math.random().toString(36).substring(2);
-
+  let val;
+  val = 0;
   const handlePayement = async () => {
     console.log(info);
-    if (info) {
+    if (info.length >4) {
     
       try {
         const res = await request.post("/commanders", {
           cart,
           info,
         });
+        val = 1;
+        alert(
+          "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
+        );
       } catch (error) {
-        console.log(error);
+        alert(
+          "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
+        );
+        //console.log(error);
       }
+      popup();
+      onClose();
+      
+
     }
   }
 
@@ -62,7 +83,26 @@ const Modal = ({ visible, onClose, total }) => {
 
   if (!visible) return null;
 
-  let mode;
+  // test de vameur annuler
+  let answer;
+  if (val === 1) {
+    answer = (
+      <div>
+        <h2>Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible</h2>
+      </div>
+    )
+  }
+    else if (val === 0) {
+      answer = (
+        <div>
+          <h2>Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !</h2>
+        </div>
+      )
+    }
+
+
+let mode;
+  
   if (get === 1) {
     mode = (
       <div>
@@ -138,6 +178,13 @@ const Modal = ({ visible, onClose, total }) => {
     console.log(info)
   }
 
+ 
+
+  const popup = () => {
+    showPopup('');
+    
+  }
+ 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex justify-center items-center  ">
       <div className="bg-white p-2 rounded w-[60%] mx-auto xs:w-[90%] overflow-y-auto h-[50%]">
@@ -237,26 +284,32 @@ const Modal = ({ visible, onClose, total }) => {
                 {mode}
               </label>
               <div className="flex  gap-x-4">
-                 <button
+                <button
                   onClick={onClose}
                   className=" w-[40%] btn bg-black text-accent"
                 >
                   <IoArrowBack className="text-lg" />
                   Annuler
-                </button> 
-               {display &&( <button
-                  onClick={handlePayement}
-                  type="submit"
-                  className=" w-[40%]  btn btn-accent hover:bg-accent-hover text-primary flex-1 px-2 gap-x-2 sm:w-[10%] md:w-[10%]  lg:w-[10%] xl:w-[10%] "
-                >
-                  Valider
-                  <IoArrowForward className="text-lg" />
-                </button>)}
+                </button>
+                {display && (
+                  <button
+                    onClick={handlePayement}
+                    type="submit"
+                    className=" w-[40%]  btn btn-accent hover:bg-accent-hover text-primary flex-1 px-2 gap-x-2 sm:w-[10%] md:w-[10%]  lg:w-[10%] xl:w-[10%] "
+                  >
+                    Valider
+                    <IoArrowForward className="text-lg" />
+                  </button>
+                )}
               </div>
             </div>
           </div>
 
           {/* <pre>{JSON.stringify(info, null, "\t")}</pre>  afficher un json en son format */}
+          <div className={`${popupStyle} absolute mx-auto my-auto h-[30em] w-[30em] flex flex-col items-center justify-center rounded-lg bg-black text-white bottom-0 transform`}>
+            
+                  {answer}
+          </div>
         </div>
       </div>
     </div>

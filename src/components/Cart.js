@@ -3,7 +3,7 @@ import { IoArrowForward, IoCartOutline, IoClose } from "react-icons/io5";
 import { CartContext } from "../context/CartContext";
 import CartItem from "../components/CartItem";
 import Modal from "./Modal";
-
+ 
 const Cart = () => {
   const { setIsOpen, cart, total, clearCart } = useContext(CartContext);
 
