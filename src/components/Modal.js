@@ -38,14 +38,27 @@ const Modal = ({ visible, onClose, total }) => {
     fetchData();
   }, []);
 
-  const uniqueString = new Date().getTime().toString(36) + Math.random().toString(36).substring(2);
+  
   let val;
+
+ 
+ 
+    
+  const getCode = () => {
+    
+  
+}
+
   val = 0;
+  
+  
   const handlePayement = async () => {
-    //console.log(info);
-    const id = uniqueString.substr(0, 6);
+
+    const uniqueString = new Date().getTime().toString(36) + Math.random().toString(36).substring(2);
+   const id = uniqueString.substr(0, 6);
     setCode(id);
-    setInfo({ ...info, code: code });
+    setInfo({ ...info, code: id });
+   console.log(info);
     if (info) {
     
       try {
@@ -62,9 +75,8 @@ const Modal = ({ visible, onClose, total }) => {
           "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
         );
         //console.log(error);
-      }
-      popup();
-      onClose();
+      } 
+      //onClose();
       
 
     }
@@ -77,6 +89,8 @@ const Modal = ({ visible, onClose, total }) => {
   }
 
   const Payements = (e) => {
+     
+    
     setDisplay(true);
     setGet(parseInt(e.target.value));
     setInfo({ ...info, payement: e.target.value });
@@ -160,9 +174,6 @@ let mode;
     } catch (error) {
        console.log(error);
     }*/
-    const id = uniqueString.substr(0, 6);
-      setCode(id);
-    setInfo({ ...info, code: code });
     
     if (info.payement !== 0 && info.code !== '') {
       
@@ -308,11 +319,7 @@ let mode;
             </div>
           </div>
 
-          {/* <pre>{JSON.stringify(info, null, "\t")}</pre>  afficher un json en son format */}
-          <div className={`${popupStyle} absolute mx-auto my-auto h-[30em] w-[30em] flex flex-col items-center justify-center rounded-lg bg-black text-white bottom-0 transform`}>
-            
-                  {answer}
-          </div>
+         {/* <pre>{JSON.stringify(info, null, "\t")}</pre>  afficher un json en son format */} 
         </div>
       </div>
     </div>
