@@ -18,11 +18,11 @@ const Products = () => {
   })
   return <div className='mb-16 pt-40 lg:pt-0'>
     <div className='container mx-auto'>
-      <div className='flex gap-x-[30px]'>
+      <div className='gap-x-[30px]'>
         <CategoryNav />
         <main>
           <div className='py-3 text-xl uppercase text-center lg:text-left'>{titre}</div>
-          <div className=' grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-[15px] md:gap-[30px] '>
+          <div className=' grid  md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-[15px] md:gap-[30px] sm:grid-cols-1 '>
             {data?.map((product) => {
               return (
                 <Product product={product} key={product.id}/>

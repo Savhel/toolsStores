@@ -5,7 +5,7 @@ const Product = ({ product }) => {
   //console.log(product.attributes.isNew);
   return (
     <Link to={`/product/${product.id}`}>
-      <div className="grad w-full h-[362px] rounded-[8px] overflow-hidden relative group">
+      <div className="grad w-[100%] h-[362px] rounded-[8px] overflow-hidden relative group text-center ">
         {/* contenu */}
         {product.attributes.isNew ? (
           <div className="absolute bg-accent text-primary text-[12px] font-extrabold uppercase top-4 right-4 px-2 rounded-full z-10">
@@ -25,15 +25,15 @@ const Product = ({ product }) => {
         {/* texte */}
         <div className="px-6 pb-8 flex-col">
           {/*titre de sa categorie */}
-          <div className="text-sm text-accent capitalize mb-2">
+          <div className="text-[30px] text-accent capitalize mb-2">
             {product.attributes.categories.data[0].attributes.titre}
           </div>
           {/*titre du produit */}
-          <div className="text-[15px] mb-4 lg:mb-9">
+          <div className="text-[20px] mb-4 lg:mb-9">
             {product.attributes.titre.substring(0, 35)}...
           </div>
           {/*Prix */}
-          <div className="text-lg text-accent">
+          <div className="text-[29px] text-accent">
             {product.attributes.prix} Fcfa
           </div>
         </div>

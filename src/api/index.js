@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:1337/api/commanders";
+const url = "https://strapi-data-app.onrender.com/api/commanders";
 
 export const lireCommandes = () =>axios.get(url); 
 

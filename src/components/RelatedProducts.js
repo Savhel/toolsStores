@@ -13,7 +13,7 @@ const RelatedProducts = ({ categorietitre }) => {
   }
   return <div className='mb-16'>
     <div className='container mx-auto'>
-      <h2 className='h2 mb-6 text-center xl:text-left'>Related Products</h2>
+      <h2 className='h2 mb-6 text-center xl:text-left'>Produits de la même categorie</h2>
       <ProductSlider data = {data}/>
     </div>
   </div>;

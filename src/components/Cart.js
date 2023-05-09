@@ -15,7 +15,7 @@ const Cart = () => {
   
   return (
     <div className="w-full h-ful px-4 text-white">
-      <div className="overflow-y-auto h-[75vh]">
+      <div className="overflow-y-auto h-[70vh]">
         <div
           onClick={() => setIsOpen(false)}
           className=" cursor-pointer text-4xl w-20 h-[98px] flex justify-start items-center "

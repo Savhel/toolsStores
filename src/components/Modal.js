@@ -18,6 +18,7 @@ const Modal = ({ visible, onClose, total }) => {
 
   const { cart, isLoad, setIsLoad, setCartT } = useContext(CartContext);
   const [get, setGet] = useState(null);
+  const [lid, setId] = useState(0);
   const [info, setInfo] = useState({});
   const [commandes, setCommandes] = useState([]);
 
@@ -28,14 +29,16 @@ const Modal = ({ visible, onClose, total }) => {
   const [isopen, setIsopen] = useState(false);
 
   const handleOnclose = () => setIsopen(false);
+   
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await api.lireCommandes();
-      //console.log(result.data);
-      setCommandes(result.data);
 
       
+      console.log(result.data.data[result.data.data.length - 1].id);
+      setId(result.data.data[result.data.data.length - 1].id);
+      console.log(lid);
     };
     fetchData();
   }, []);
@@ -51,6 +54,14 @@ const Modal = ({ visible, onClose, total }) => {
 }
 
   val = 0;
+  //bot telegramme
+
+  const sendMessage = async (text) => {
+    const response = await axios.post(
+      `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=2097213446&text=${text}`
+    );
+    console.log(response.data);
+  };
   
   
   
@@ -62,10 +73,10 @@ const Modal = ({ visible, onClose, total }) => {
    const id = uniqueString.substr(0, 6);
     setCode(id);
       setInfo({ ...info, code: id });
-      console.log(total);
+      /* console.log(total);
     console.log(info);
-    
-   if (info) {
+    console.log(lid); */
+    if (info) {
     
       try {
         const res = await request.post("/commanders", {
@@ -74,7 +85,39 @@ const Modal = ({ visible, onClose, total }) => {
           total,
           code,
           total,
+          code,
         });
+
+        /* const lastPost = await strapi.query("commenders").findOne({}, ["id"], {
+          sort: { id: "desc" },
+        }); */
+        
+        //const lId = lastPost.id;
+         /* const lId = 2;
+
+        const TelegramBot = require("node-telegram-bot-api");
+
+        // Remplacez "votre_jeton_d_accès_bot" par le jeton d'accès fourni par BotFather
+        const token = "6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70";
+
+        // Créez un nouveau bot en passant le jeton d'accès à la classe TelegramBot
+        const bot = new TelegramBot(token, { polling: true });
+
+        // Écoutez les messages entrants
+        bot.on("message", (msg) => {
+          // Récupérez l'identifiant du chat à partir du message
+          const chatId = msg.chat.id;
+
+          // Répondez au message en envoyant un message de réponse
+          bot.sendMessage(
+            chatId,
+            `Salut Narcisse , tu as une nouvelle commande une nouvelle commande check le contenu ici : https://Kalachi-store.vercel.app/commande/${lId} !`
+          );
+        }); */ 
+        const txt = `Salut Narcisse , tu as une nouvelle commande une nouvelle commande check le contenu ici : https://Kalachi-stores.vercel.app/commande/${id} !`
+
+        sendMessage(txt);
+        
         alert(
           "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
         );
@@ -83,11 +126,11 @@ const Modal = ({ visible, onClose, total }) => {
           "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
         );
         console.log(error);
-      } 
+      }
       onClose();
       
 
-    } 
+    }  
   }
 
   const [display, setDisplay] = useState(false);
