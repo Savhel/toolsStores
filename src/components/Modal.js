@@ -114,7 +114,7 @@ const Modal = ({ visible, onClose, total }) => {
             `Salut Narcisse , tu as une nouvelle commande une nouvelle commande check le contenu ici : https://Kalachi-store.vercel.app/commande/${lId} !`
           );
         }); */ 
-        const txt = `Salut Narcisse , tu as une nouvelle commande une nouvelle commande check le contenu ici : https://Kalachi-stores.vercel.app/commande/${lid} !`
+        const txt = `Salut Narcisse , Mr / M ${info.prenom} ${info.nom} a passé une nouvelle commande regarde son le contenu ici : https://Kalachi-stores.vercel.app/commande/${lid} !`
 
         sendMessage(txt);
         
