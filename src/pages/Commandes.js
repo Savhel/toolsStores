@@ -14,7 +14,7 @@ const Commandes = () => {
  const { id } = useParams();
   const { data } = useFetch(`/commanders?populate=*&filters[id][$eq]=${id}`);
   
-  console.log(data);
+  //console.log(data);
  if (!data) {
    return <div className="container mx-auto">Chargement des données...</div>;
  }

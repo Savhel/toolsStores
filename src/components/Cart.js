@@ -42,7 +42,7 @@ const Cart = () => {
       <div className="px-6 ">
         {cart.length >= 1 ? (
           <div className="flex justify-between gap-x-4">
-                <button onClick={() => { clearCart()}} className="btn btn-accent hover:bg-accent-hover text-primary">Vider le panier</button>
+                <button onClick={() => { clearCart()}} className="btn btn-accent hover:bg-accent-hover text-primary text-sm">Vider le panier</button>
             <button
               onClick={() => { setIsLoad(true) }}
               className="btn btn-accent hover:bg-accent-hover text-primary flex-1 px-2 gap-x-2">

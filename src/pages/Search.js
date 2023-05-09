@@ -9,7 +9,7 @@ const Search = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchTerm = searchParams.get('query');
-  console.log(searchTerm);
+  //console.log(searchTerm);
   //recuperer les produits en fonctions de le recherche
   const { data } = useFetch(`/products?populate=*&filters[titre][$contains]=${searchTerm}`);
   //console.log(data);

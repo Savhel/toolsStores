@@ -36,9 +36,9 @@ const Modal = ({ visible, onClose, total }) => {
       const result = await api.lireCommandes();
 
       
-      console.log(result.data.data[result.data.data.length - 1].id);
+      //console.log(result.data.data[result.data.data.length - 1].id);
       setId(result.data.data[result.data.data.length - 1].id);
-      console.log(lid);
+      //console.log(lid);
     };
     fetchData();
   }, []);
@@ -60,7 +60,7 @@ const Modal = ({ visible, onClose, total }) => {
     const response = await axios.post(
       `https://api.telegram.org/bot6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70/sendMessage?chat_id=2097213446&text=${text}`
     );
-    console.log(response.data);
+    //.log(response.data);
   };
   
   
@@ -125,7 +125,7 @@ const Modal = ({ visible, onClose, total }) => {
         alert(
           "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
         );
-        console.log(error);
+        //console.log(error);
       }
       onClose();
       
@@ -231,9 +231,9 @@ let mode;
       
       try {
           const  data  = await api.creerCommandes(info);
-          console.log(JSON.stringify(data?.data));
+          //console.log(JSON.stringify(data?.data));
         } catch (error) {
-          console.log(error);
+          //console.log(error);
         }  
     }
      setCode('');
@@ -241,7 +241,7 @@ let mode;
 
   const annuler = () => {
     setInfo({});
-    console.log(info)
+   // console.log(info)
   }
 
  
@@ -342,7 +342,7 @@ let mode;
                    <option value="0">choisir .. ..</option>
                    <option value="1">Payements OM</option>
                    <option value="2">Payements MOMO</option>
-                   <option value="3">Payements à la livraison</option>}
+                   <option value="3">Payements à la livraison</option>
                 </select>
               </label>
 
