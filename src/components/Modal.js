@@ -339,10 +339,10 @@ let mode;
                   className="block w-[90%] mx-auto mt-1 text-black"
                   required
                 >
-                  {get === 0 && <option value="0">choisir .. ..</option>}
-                  {get === 1 && <option value="1">Payements OM</option>}
-                  {get === 2 && <option value="2">Payements MOMO</option>}
-                  {get === 3 && <option value="3">Payements à la livraison</option>} 
+                   <option value="0">choisir .. ..</option>
+                   <option value="1">Payements OM</option>
+                   <option value="2">Payements MOMO</option>
+                   <option value="3">Payements à la livraison</option>}
                 </select>
               </label>
 
