@@ -30,7 +30,7 @@ const Modal = ({ visible, onClose, total }) => {
 
   const handleOnclose = () => setIsopen(false);
    
-   useEffect(() => {
+   /* useEffect(() => {
      const fetchData = async () => {
        const result = await api.lireCommandes();
 
@@ -39,7 +39,7 @@ const Modal = ({ visible, onClose, total }) => {
        console.log(lid);
      };
      fetchData();
-   }, []); 
+   }, []);  */
 
 
   
@@ -52,7 +52,14 @@ const Modal = ({ visible, onClose, total }) => {
     //.log(response.data);
   };
   
-  
+  const fetchData = async () => {
+          const result = await api.lireCommandes();
+
+          console.log(result.data.data);
+          setId(result.data.data[result.data.data.length - 1].id);
+          console.log(lid);
+    handlePayement();
+        };
   
   const handlePayement = async () => {
 
@@ -64,13 +71,7 @@ const Modal = ({ visible, onClose, total }) => {
       setInfo({ ...info, code: id });
      
     
-        const fetchData = async () => {
-          const result = await api.lireCommandes();
-
-          console.log(result.data.data[result.data.data.length - 1].id);
-          setId(result.data.data[result.data.data.length - 1].id);
-          //console.log("lid");
-        };
+        
     //console.log(lid);
     
      if (info && lid !== null) {
@@ -93,13 +94,7 @@ const Modal = ({ visible, onClose, total }) => {
         
         alert(
           "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
-        );
-         
-        
-        
-        
-
-           
+        );    
       } catch (error) {
         alert(
           "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
@@ -290,7 +285,7 @@ let mode;
                 </button>
                 {display && (
                   <button
-                    onClick={handlePayement}
+                    onClick={fetchData}
                     type="submit"
                     className=" w-[40%]  btn btn-accent hover:bg-accent-hover text-primary flex-1 px-2 gap-x-2 sm:w-[10%] md:w-[10%]  lg:w-[10%] xl:w-[10%] "
                   >
