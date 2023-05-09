@@ -17,7 +17,7 @@ import valider from './valider';
 const Modal = ({ visible, onClose, total }) => {
 
   const { cart, isLoad, setIsLoad, setCartT } = useContext(CartContext);
-  const [get, setGet] = useState(null);
+  const [get, setGet] = useState(0);
   const [lid, setId] = useState(0);
   const [info, setInfo] = useState({});
   const [commandes, setCommandes] = useState([]);
@@ -339,10 +339,10 @@ let mode;
                   className="block w-[90%] mx-auto mt-1 text-black"
                   required
                 >
-                  <option value="0">choisir .. ..</option>
-                  <option value="1">Payements OM</option>
-                  <option value="2">Payements MOMO</option>
-                  <option value="3">Payements à la livraison</option>
+                  {get === 0 && <option value="0">choisir .. ..</option>}
+                  {get === 1 && <option value="1">Payements OM</option>}
+                  {get === 2 && <option value="2">Payements MOMO</option>}
+                  {get === 3 && <option value="3">Payements à la livraison</option>} 
                 </select>
               </label>
 
@@ -371,7 +371,7 @@ let mode;
             </div>
           </div>
 
-         {/* <pre>{JSON.stringify(info, null, "\t")}</pre>  afficher un json en son format */} 
+          {/* <pre>{JSON.stringify(info, null, "\t")}</pre>  afficher un json en son format */}
         </div>
       </div>
     </div>
