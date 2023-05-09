@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import CategoryNav from "../components/CategoryNav";
 import MainSlider from "../components/MainSlider";
-
+import { CartContext } from "../context/CartContext";
 import PromoImg1 from "../img/promo_img1.png";
 import PromoImg2 from "../img/promo_img2.png";
 
 const Hero = () => {
+  const { menu, setMenu } = useContext(CartContext);
   return (
     <section className="mb-[30px] pt-36 lg:pt-0">
       <div className="container mx-auto">
@@ -25,10 +26,14 @@ const Hero = () => {
               {/* text */}
               <div className="flex flex-col max-w-[144px] h-full justify-center">
                 <div className="text-[20px] uppercase font-medium leading-tight mb-4 ">
-                  -35% de reduction sur ce produit
+                  La marque des travailleurs
                 </div>
-                <a href="#" className="uppercase text-accent">
-                  Ajouter au panier
+                <a
+                  href="#"
+                  onClick={() => setMenu(true)}
+                  className="uppercase text-accent"
+                >
+                  Allons-y
                 </a>
               </div>
               {/* img */}
@@ -43,10 +48,14 @@ const Hero = () => {
               {/* text */}
               <div className="flex flex-col max-w-[144px] h-full justify-center">
                 <div className="text-[20px] uppercase font-medium leading-tight mb-4 ">
-                  -A0% de reduction sur ce produit
+                  La confiance notre seul slogant
                 </div>
-                <a href="#" className="uppercase text-accent">
-                  Ajouter au panier
+                <a
+                  href="#"
+                  onClick={() => setMenu(true)}
+                  className="uppercase text-accent"
+                >
+                  Allons-y
                 </a>
               </div>
               {/* img */}

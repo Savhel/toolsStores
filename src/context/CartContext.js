@@ -10,7 +10,8 @@ const CartProvider = ({ children }) => {
   const [itemsAmount, setItemsAmount] = useState(0);
   const [amount, setAmount] = useState(0);
   const [total, setTotal] = useState(0);
-  const[cartT, setCartT] = useState(0);
+  const [cartT, setCartT] = useState(0);
+  const [menu, setMenu] = useState(false);
 
   //montant
   useEffect(() => {
@@ -125,6 +126,8 @@ const CartProvider = ({ children }) => {
         clearCart,
         cartT,
         setCartT,
+        menu,
+        setMenu,
       }}
     >
       {children}

@@ -13,6 +13,9 @@ const Footer = () => {
         <input type='email' placeholder='voutre email' className='input' />
         <button className='btn btn-accent min-w-[150px]'>Joindre</button>
       </form>
+      <div className='text-base text-white/60 flex gap-x-6 capitalize max-w-max mx-auto mb-9'>
+        Situé à Ngousso ..........  Pour tous vos probèmes liés à vos commandes contactez le  : +237 6...........
+      </div>
       {/* liens */}
       <div className='text-base text-white/60 flex gap-x-6 capitalize max-w-max mx-auto mb-9'>
         <a href='#' className='hover:text-white transition-all'>Police</a>

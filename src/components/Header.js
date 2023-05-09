@@ -12,8 +12,8 @@ import Cart from "../components/Cart";
 import { CartContext } from "../context/CartContext";
 
 const Header = () => {
-  const { isOpen, setIsOpen, itemsAmount } = useContext(CartContext);
-  const [menu, setMenu] = useState(false);
+  const { isOpen, setIsOpen, itemsAmount ,menu, setMenu } = useContext(CartContext);
+  //const [menu, setMenu] = useState(false);
   return (
     <header className="bg-primary py-6 fixed w-full top-0 z-40 lg:relative xl:mb-[30px]">
       <div className="container mx-auto">

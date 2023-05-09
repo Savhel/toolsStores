@@ -9,38 +9,23 @@ import "../slider.css";
 import { Pagination } from "swiper";
 
 import camera from "../img/camera.png";
+import logo from "../img/logo.png";
 
 const slideData = [
   {
     img: camera,
-    pretitle: 'Offre Special',
-    titlePart1: '20% de reduction',
-    titlePart2: 'À votre',
-    titlePart3: 'première commande',
+    pretitle: 'Pourquoi perdre',
+    titlePart1: 'une journée faute de matériels ??',
+    titlePart2: 'passe ta commande tout simplement',
+    titlePart3: 'nous sommes déja là !!',
     btnText: 'Ajouter au panier',
   },
   {
-    img: camera,
-    pretitle: 'Offre Special',
-    titlePart1: '20% de reduction',
-    titlePart2: 'À votre',
-    titlePart3: 'première commande',
-    btnText: 'Ajouter au panier',
-  },
-  {
-    img: camera,
-    pretitle: 'Offre Special',
-    titlePart1: '20% de reduction',
-    titlePart2: 'À votre',
-    titlePart3: 'première commande',
-    btnText: 'Ajouter au panier',
-  },
-  {
-    img: camera,
-    pretitle: 'Offre Special',
-    titlePart1: '20% de reduction',
-    titlePart2: 'À votre',
-    titlePart3: 'première commande',
+    img: logo,
+    pretitle: 'On a plus peur des prix ',
+    titlePart1: 'dans le réseau du débrouillard',
+    titlePart2: 'les prix ',
+    titlePart3: 'sont les miettes !!',
     btnText: 'Ajouter au panier',
   },
 ]
@@ -70,7 +55,6 @@ const MainSlider = () => {
                       {slide.titlePart2} <br />
                       {slide.titlePart3}
                     </div>
-                    <button className="btn btn-accent mx-auto lg:mx-0">Allons-y</button>
                   </div>
                   {/*img */}
                   <div className="flex-1">
