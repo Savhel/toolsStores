@@ -179,7 +179,7 @@ let mode;
           NB : les payements doivent être faits au nom enregistré dans les
           champs du haut !!
         </h6>
-        <h2>Veuillez composer ce code #150*14*...*6......*{total}#</h2>
+        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#150*14*...*6......*${total}#</a> </h2>
         <p>Vérifiez que le recepteur soit ........ </p>
         <h6 className="text-bold text-accent ">
           Merci de faire confiance à ....Store{" "}
@@ -193,7 +193,7 @@ let mode;
           NB : les payements doivent être faits au nom enregistré dans les
           champs du haut !!
         </h6>
-        <h2>Veuillez envoyer {total} Fcfa au 6......</h2>
+        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#126*11*...*6......*${total}#</a></h2>
         <p>Vérifiez que le recepteur est ........ </p>
         <h6 className="text-bold text-accent ">
           Merci de faire confiance à ....Store{" "}
