@@ -18,7 +18,7 @@ const Modal = ({ visible, onClose, total }) => {
 
   const { cart, isLoad, setIsLoad, setCartT } = useContext(CartContext);
   const [get, setGet] = useState(0);
-  const [lid, setId] = useState(0);
+  const [lid, setId] = useState(null);
   const [info, setInfo] = useState({});
   const [commandes, setCommandes] = useState([]);
 
@@ -30,30 +30,10 @@ const Modal = ({ visible, onClose, total }) => {
 
   const handleOnclose = () => setIsopen(false);
    
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await api.lireCommandes();
-
-      
-      //console.log(result.data.data[result.data.data.length - 1].id);
-      setId(result.data.data[result.data.data.length - 1].id);
-      //console.log(lid);
-    };
-    fetchData();
-  }, []);
-
-   
-  let val;
-
- 
-    
-  const getCode = () => {
-    
   
-}
 
-  val = 0;
+
+  
   //bot telegramme
 
   const sendMessage = async (text) => {
@@ -73,10 +53,20 @@ const Modal = ({ visible, onClose, total }) => {
    const id = uniqueString.substr(0, 6);
     setCode(id);
       setInfo({ ...info, code: id });
-      /* console.log(total);
-    console.log(info);
-    console.log(lid); */
-    if (info) {
+     
+    
+        const fetchData = async () => {
+          const result = await api.lireCommandes();
+
+          console.log(result.data.data[result.data.data.length - 1].id);
+          setId(result.data.data[result.data.data.length - 1].id);
+          console.log(lid);
+        };
+    console.log(lid);
+    
+    if (info && lid !== null) {
+
+     
     
       try {
         const res = await request.post("/commanders", {
@@ -87,40 +77,20 @@ const Modal = ({ visible, onClose, total }) => {
           total,
           code,
         });
-
-        /* const lastPost = await strapi.query("commenders").findOne({}, ["id"], {
-          sort: { id: "desc" },
-        }); */
         
-        //const lId = lastPost.id;
-         /* const lId = 2;
-
-        const TelegramBot = require("node-telegram-bot-api");
-
-        // Remplacez "votre_jeton_d_accès_bot" par le jeton d'accès fourni par BotFather
-        const token = "6299856957:AAFgiBIT2Cwf9H6Y0hMcyPijKSUrPexM_70";
-
-        // Créez un nouveau bot en passant le jeton d'accès à la classe TelegramBot
-        const bot = new TelegramBot(token, { polling: true });
-
-        // Écoutez les messages entrants
-        bot.on("message", (msg) => {
-          // Récupérez l'identifiant du chat à partir du message
-          const chatId = msg.chat.id;
-
-          // Répondez au message en envoyant un message de réponse
-          bot.sendMessage(
-            chatId,
-            `Salut Narcisse , tu as une nouvelle commande une nouvelle commande check le contenu ici : https://Kalachi-store.vercel.app/commande/${lId} !`
-          );
-        }); */ 
-        const txt = `Salut Narcisse , Mr / M ${info.prenom} ${info.nom} a passé une nouvelle commande regarde son le contenu ici : https://Kalachi-stores.vercel.app/commande/${lid} !`
+          const txt = `Salut Narcisse , Mr / M ${info.prenom} ${info.nom} a passé une nouvelle commande regarde son le contenu ici : https://Kalachi-stores.vercel.app/commande/${lid+1} !`
 
         sendMessage(txt);
         
         alert(
           "Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible"
         );
+         
+        
+        
+        
+
+           
       } catch (error) {
         alert(
           "Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !"
@@ -135,9 +105,6 @@ const Modal = ({ visible, onClose, total }) => {
 
   const [display, setDisplay] = useState(false);
 
-  const Dis = () => {
-    setDisplay(true);
-  }
 
   const Payements = (e) => {
      
@@ -152,21 +119,7 @@ const Modal = ({ visible, onClose, total }) => {
   if (!visible) return null;
 
   // test de vameur annuler
-  let answer;
-  if (val === 1) {
-    answer = (
-      <div>
-        <h2>Commande réussie Nous cherchons déjà à vous joindre pour la livraison le plus tôt possible</h2>
-      </div>
-    )
-  }
-    else if (val === 0) {
-      answer = (
-        <div>
-          <h2>Une erreur est survenue lors de la commande veuillez réessayer s'il vous plait !</h2>
-        </div>
-      )
-    }
+  
 
 
 let mode;
@@ -214,42 +167,11 @@ let mode;
     );
   }
 
-  
-  
-  const commander = async () => {
-  /*try {
-      const url = `http://localhost:1337/api/commanders`;
-      if ( info.nom && info.prenom && info.email && info.telephone && info.adresse ) {
-        const res = await axios.post(url, info);
-        console.log(res);
-      }
-    } catch (error) {
-       console.log(error);
-    }*/
-    
-    if (info.payement !== 0 && info.code !== '') {
-      
-      try {
-          const  data  = await api.creerCommandes(info);
-          //console.log(JSON.stringify(data?.data));
-        } catch (error) {
-          //console.log(error);
-        }  
-    }
-     setCode('');
-  };
 
-  const annuler = () => {
-    setInfo({});
-   // console.log(info)
-  }
+
+  
 
  
-
-  const popup = () => {
-    showPopup('');
-    
-  }
  
   return (
     <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex justify-center items-center  ">

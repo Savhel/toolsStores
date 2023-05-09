@@ -6,6 +6,7 @@ import { useLocation, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import CategoryNav from "../components/CategoryNav";
 import Product from "../components/Product";
+import Benefits from "../components/Benefits";
 
 const Commandes = () => {
 
@@ -23,9 +24,9 @@ const Commandes = () => {
 
 
   return (
-    <div className="sm:w-full h-ful px-4 text-white bottom-7 mt-[10em] justify-center my-auto">
-      <div className="block mx-auto">
-        <div>
+    <div className="sm:w-full h-ful px-4 text-white bottom-7 mt-[10em] justify-center my-auto mx-auto">
+      <div className=" mx-auto">
+        <div className="mx-auto md:w-[50em] lg:w-[50em] xl:w-[50em]">
           <h2 className="text-center text-2xl">
             Mr / M. {data[0].attributes.prenom} {data[0].attributes.nom}
           </h2>
@@ -36,17 +37,17 @@ const Commandes = () => {
           </h3>
           <hr></hr>
         </div>
-        <div className="flex flex-col gap-y-10 px-2 mx-auto mt-3">
+        <div className="flex flex-col gap-y-10 px-2 mx-auto mt-3 justify-center items-center">
           {data[0].attributes.panier.map((item) => {
-            return <CartItem item={item} key={item.id} />;
+            return <Benefits item={item} key={item.id} />;
           })}
         </div>
       </div>
       {/*sous total et total */}
       <div className="px-6 py-10 flex flex-col">
         {/*Total*/}
-        <div className="flex justify-between text-xl">
-          <div className="text-[20px] my-auto">Net à recevoir : </div>
+        <div className="flex justify-between text-xl mx-auto md:w-[50em] lg:w-[50em] xl:w-[50em]">
+          <div className="text-[20px] my-auto">Total : </div>
           <div className="bg-accent p-3 rounded-lg text-black">
             {data[0].attributes.total} Fcfa
           </div>
