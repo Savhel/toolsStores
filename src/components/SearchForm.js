@@ -19,7 +19,7 @@ const SearchForm = () => {
 })
 
   const handleSearchInput = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchTerm(e.target.value.toLowerCase);
   };
 
   const handleSubmit = (e) => {
