@@ -30,7 +30,16 @@ const Modal = ({ visible, onClose, total }) => {
 
   const handleOnclose = () => setIsopen(false);
    
-  
+   useEffect(() => {
+     const fetchData = async () => {
+       const result = await api.lireCommandes();
+
+       console.log(result.data.data);
+       setId(result.data.data[result.data.data.length - 1].id);
+       console.log(lid);
+     };
+     fetchData();
+   }, []); 
 
 
   
@@ -60,11 +69,11 @@ const Modal = ({ visible, onClose, total }) => {
 
           console.log(result.data.data[result.data.data.length - 1].id);
           setId(result.data.data[result.data.data.length - 1].id);
-          console.log(lid);
+          //console.log("lid");
         };
-    console.log(lid);
+    //console.log(lid);
     
-    if (info && lid !== null) {
+     if (info && lid !== null) {
 
      
     
@@ -100,7 +109,7 @@ const Modal = ({ visible, onClose, total }) => {
       onClose();
       
 
-    }  
+    }   
   }
 
   const [display, setDisplay] = useState(false);
@@ -132,7 +141,7 @@ let mode;
           NB : les payements doivent être faits au nom enregistré dans les
           champs du haut !!
         </h6>
-        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#150*14*...*6......*${total}#</a> </h2>
+        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#150*14*...*6......*{total}#</a> </h2>
         <p>Vérifiez que le recepteur soit ........ </p>
         <h6 className="text-bold text-accent ">
           Merci de faire confiance à ....Store{" "}
@@ -146,7 +155,7 @@ let mode;
           NB : les payements doivent être faits au nom enregistré dans les
           champs du haut !!
         </h6>
-        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#126*11*...*6......*${total}#</a></h2>
+        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#126*11*...*6......*{total}#</a></h2>
         <p>Vérifiez que le recepteur est ........ </p>
         <h6 className="text-bold text-accent ">
           Merci de faire confiance à ....Store{" "}
