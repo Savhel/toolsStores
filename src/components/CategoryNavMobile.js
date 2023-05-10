@@ -7,6 +7,9 @@ import useFetch from '../hooks/useFetch';
 const CategoryNavMobile = ({ setMenu }) => {
   //recuperer les categories
   const { data } = useFetch('/categories');
+
+  
+
   return (
     <div className='w-full h-full bg-primary p-8'>
       {/* close icon */}
@@ -17,7 +20,7 @@ const CategoryNavMobile = ({ setMenu }) => {
       </div>
       <div className='flex flex-col gap-y-8'>
         {data?.map((categorie) => {
-          return <Link to={`products/${categorie.id}`} className='uppercase font-medium ' key={categorie.id}>{categorie.attributes.titre}</Link>
+          return <Link to={`products/${categorie.id}`} onClick={() => setMenu(false)} className='uppercase font-medium ' key={categorie.id}>{categorie.attributes.titre}</Link>
         })}
       </div>
     </div>
