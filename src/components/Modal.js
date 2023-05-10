@@ -58,10 +58,10 @@ const Modal = ({ visible, onClose, total }) => {
           console.log(result.data.data);
           setId(result.data.data[result.data.data.length - 1].id);
           console.log(lid);
-    handlePayement();
+          handlePayement(result.data.data[result.data.data.length - 1].id);
         };
   
-  const handlePayement = async () => {
+  const handlePayement = async (fId) => {
 
     setCartT(total);
     
@@ -74,7 +74,7 @@ const Modal = ({ visible, onClose, total }) => {
         
     //console.log(lid);
     
-     if (info && lid !== null) {
+     if (info.nom && info.prenom && info.email && info.telephone && info.adresse ) {
 
      
     
@@ -88,7 +88,7 @@ const Modal = ({ visible, onClose, total }) => {
           code,
         });
         
-          const txt = `Salut Narcisse , Mr / M ${info.prenom} ${info.nom} a passé une nouvelle commande regarde son le contenu ici : https://Kalachi-stores.vercel.app/commande/${lid+1} !`
+          const txt = `Salut Narcisse , Mr / M ${info.prenom} ${info.nom} a passé une nouvelle commande regarde son le contenu ici : https://Kalachi-stores.vercel.app/commande/${fId+1} !`
 
         sendMessage(txt);
         
@@ -104,7 +104,11 @@ const Modal = ({ visible, onClose, total }) => {
       onClose();
       
 
-    }   
+     } else {
+       alert(
+         "Toutes les information demandées ci-haut sont necessaires pour votre commmande s'il vous plait remplissez tous ls champs !"
+       );
+    }  
   }
 
   const [display, setDisplay] = useState(false);
