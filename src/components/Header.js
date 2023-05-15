@@ -45,7 +45,7 @@ const Header = () => {
           <div className="flex items-center gap-x-[10px]">
             {/* phone */}
             <div className="hidden xl:flex uppercase">
-              Besoin d'aide ? +237 690-295-069
+              Besoin d'aide ? +237 675-962-608
             </div>
             {/* cart */}
             <div

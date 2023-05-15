@@ -140,10 +140,10 @@ let mode;
           NB : les payements doivent être faits au nom enregistré dans les
           champs du haut !!
         </h6>
-        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#150*14*...*6......*{total}#</a> </h2>
-        <p>Vérifiez que le recepteur soit ........ </p>
+        <h2>Veuillez composer ce code <a className="bg-green-400 text-white" href={`tel:#150*14*...*6......*${total}#`}>Composer </a> ou taper le #150*14*...*6......*{total}#</h2>
+        <p>Vérifiez que le recepteur soit " Ets KALACH IMPORT "</p>
         <h6 className="text-bold text-accent ">
-          Merci de faire confiance à ....Store{" "}
+          Merci de faire confiance à Votre Réseau du débrouillard !!!
         </h6>
       </div>
     );
@@ -154,10 +154,19 @@ let mode;
           NB : les payements doivent être faits au nom enregistré dans les
           champs du haut !!
         </h6>
-        <h2>Veuillez composer ce code <a href={`tel:#150*14*...*6......*${total}#`}>#126*11*...*6......*{total}#</a></h2>
-        <p>Vérifiez que le recepteur est ........ </p>
+        <h2>
+          Veuillez composer ce code{" "}
+          <a
+            className="bg-green-400 text-white"
+            href={`tel:*126*11*...*675962608*${total}#`}
+          >
+            Composer
+          </a>
+          *126*11*...*675962608*{total}#
+        </h2>
+        <p>Vérifiez que le recepteur soit " Ets KALACH IMPORT " </p>
         <h6 className="text-bold text-accent ">
-          Merci de faire confiance à ....Store{" "}
+          Merci de faire confiance à Votre Réseau du débrouillard !!!
         </h6>
       </div>
     );
@@ -169,7 +178,7 @@ let mode;
           coursier vous livrera aussitôt
         </p>
         <h6 className="text-bold text-accent ">
-          Merci de faire confiance à ....Store{" "}
+          Merci de faire confiance à Votre Réseau du débrouillard !!!
         </h6>
       </div>
     );
