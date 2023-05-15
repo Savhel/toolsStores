@@ -3,7 +3,7 @@ import {Link } from 'react-router-dom'
 const Product = ({ product }) => {
   //console.log(product);
   //console.log(product.attributes.isNew);
-  console.log(product.attributes.categories);
+  //console.log(product.attributes.categories);
    if (!product) {
      return <div className="container mx-auto">Chargement des données...</div>;
    }
