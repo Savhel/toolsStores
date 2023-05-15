@@ -3,6 +3,10 @@ import {Link } from 'react-router-dom'
 const Product = ({ product }) => {
   //console.log(product);
   //console.log(product.attributes.isNew);
+  console.log(product.attributes.categories);
+   if (!product) {
+     return <div className="container mx-auto">Chargement des données...</div>;
+   }
   return (
     <Link to={`/product/${product.id}`}>
       <div className="grad w-[100%] h-[362px] rounded-[8px] overflow-hidden relative group text-center ">
@@ -26,7 +30,8 @@ const Product = ({ product }) => {
         <div className="px-6 pb-8 flex-col">
           {/*titre de sa categorie */}
           <div className="text-[30px] text-accent capitalize mb-2">
-            {product.attributes.categories.data[0].attributes.titre}
+            {product.attributes.categories.data.length >= 1 &&
+              product.attributes.categories.data[0].attributes.titre}
           </div>
           {/*titre du produit */}
           <div className="text-[20px] mb-4 lg:mb-9">
